@@ -1,0 +1,51 @@
+.main-heading {
+    color: grey;
+    text-align: center;
+}
+
+.input-form {
+    margin: 20%;
+    margin-top: 0;
+    padding: 5%;
+}
+
+.item-image {
+    margin: auto;
+}
+
+.tile-main-div {
+    margin: 5%;
+    padding: 0;
+}
+
+.tile-sub {
+    margin: auto 0;
+}
+
+.tile-content {
+    padding: 5%;
+}
+
+.tile-heading {
+    margin: 10px 0;
+    text-align: center;
+    font-size: 4rem;
+}
+
+.tile-description {
+    margin: 10px 0;
+    font-size: 1.2rem;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.tile-link {
+    margin: 40px 0;
+    text-align: left;
+}
+
+.tile-image {
+    width: 100%;
+    border-radius: 5%;
+
+}
