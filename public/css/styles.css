@@ -15,6 +15,7 @@
 
 .tile-main-div {
     margin: 5%;
+    margin-top: 1%;
     padding: 0;
 }
 
@@ -48,4 +49,18 @@
     width: 100%;
     border-radius: 5%;
 
+}
+
+.modify-btn {
+
+}
+
+.modify-form1 {
+    display: inline-block;
+    margin-left: 70%;
+}
+
+.modify-form2 {
+    display: inline-block;
+    margin-left: auto;
 }

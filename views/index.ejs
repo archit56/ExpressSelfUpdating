@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="css/styles.css">
-    <title>To Do List</title>
+    <title>Info page</title>
 </head>
 
 <body>
@@ -20,8 +20,12 @@
     <div class="box">
         <% for (let i=0; i < toDoList.length; i++) { %>
             <div class="item">
-                <form action="/delete" method="post">
-                    <input name="checkbox" value=<%=toDoList[i]._id %> type="checkbox" onchange="this.form.submit()">
+                <form class="modify-form1" action="/delete" method="post">
+                    <!-- <input name="checkbox" value=<%=toDoList[i]._id %> type="checkbox" onchange="this.form.submit()"> -->
+                    <button class="btn btn-primary modify-btn" type="submit" name="checkbox" value=<%=toDoList[i]._id %>>Delete</button>
+                </form>
+                <form class="modify-form2" action="/update" method="post">
+                    <button class="btn btn-primary modify-btn" type="submit" name="checkbox2" value=<%=toDoList[i]._id %>>Update</button>
                 </form>
                 <div class="container-fluid">
                     <div class="tile-main-div row">

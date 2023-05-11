@@ -1,7 +1,9 @@
 // mongodb connectivity
+require("dotenv").config();
+// console.log(process.env);
 const { ObjectId } = require('mongodb');
 const mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://archit:test123@startingcluster.wefgydk.mongodb.net/ExpressSelfUpdating');
+mongoose.connect(process.env.MONGODB_URI);
 
 const listSchema = new mongoose.Schema({
     name: {
@@ -58,18 +60,47 @@ app.post("/", (req, res) => {
 
 })
 
-app.post("/delete", (req, res) => {
+app.post("/delete", async (req, res) => {
     const checkboxId = req.body.checkbox;
     console.log(checkboxId)
 
-    listModel.deleteOne({ _id: checkboxId }).then(res.redirect("/"));
-
-
+    listModel.deleteOne({ _id: checkboxId }).then((e) => {console.log(e)});
+    await res.redirect("/")
 })
+
+app.post("/update", (req, res) => {
+
+    const checkbox2Id = req.body.checkbox2;
+    console.log(checkbox2Id);
+
+    const toDolist = listModel.find({_id: checkbox2Id}).then((member => {
+        console.log("This is the member" + member)
+        res.render("update", { itemsObj: member });
+    }));
+
+    
+    // listModel.updateOne({_id: checkbox2Id}).then()
+})
+
+app.post("/finalUpdate", async (req, res) => {
+    const newItem = req.body.nextItem;
+    const newDesc = req.body.desc;
+    const newImage = req.body.image;
+    const objectId = req.body.objectId;
+
+    console.log(req.body);
+    console.log(objectId);
+
+    listModel.updateOne({_id: objectId}, {$set: {name: newItem, desc: newDesc, image: newImage}}).then((e) => console.log(e));
+
+    await res.redirect("/")
+})
+
 
 app.get("/about", (req, res) => {
     res.render("about");
 })
+
 
 app.listen(port, () => {
     console.log("Server runnin at localhost:3000");
